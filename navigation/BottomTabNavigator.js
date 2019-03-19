@@ -11,7 +11,9 @@ const BottomTabNavigator = createBottomTabNavigator(
     // Screens
     Services: {
       screen: ServicesScreen,
-      navigationOptions: { title: 'Services' },
+      navigationOptions: {
+        title: 'Services',
+      },
     },
     UserDetails: {
       screen: UserDetailsScreen,
@@ -33,6 +35,7 @@ const BottomTabNavigator = createBottomTabNavigator(
     },
   },
   {
+    animationEnabled: true,
     // Options
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarOptions: {
