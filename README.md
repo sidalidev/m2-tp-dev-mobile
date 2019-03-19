@@ -35,7 +35,7 @@ Pour que ça ne devienne pas trés vite le bouzin sur les branche l'idée est d'
 
 Pour vous donner un exemple:
 
-Jean-Babibel doit bosser sur la fonctionnalité de produits où il doit afficher une liste de produits, Jean-Babibel est soucieux de l'organisation de notre cher repo git, du coup il crée une branche a partir de notre branche de reference qui est la `master` --> `feat/products`.
+Jean-Babibel doit bosser sur la fonctionnalité de produits où il doit afficher une liste de produits, Jean-Babibel est soucieux de l'organisation de notre cher repo git, du coup il crée une branche a partir de notre branche de reference qui est la `master` --> `products`.
 
 Une fois qu'il aura terminé son développement, il fera une pull/merge request vers la branche `master` affin de fusionner ce qu'il a codé avec l'existant.
 
