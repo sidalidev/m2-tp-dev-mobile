@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 export default class UsersScreen extends React.Component {
   static navigationOptions = {
-    title: 'Utilisateurs',
+    title: 'Résultat',
   }
   render() {
     return (
