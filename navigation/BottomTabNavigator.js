@@ -9,10 +9,28 @@ import DevelopersScreen from '../screens/DevelopersScreen'
 const BottomTabNavigator = createBottomTabNavigator(
   {
     // Screens
-    Services: ServicesScreen,
-    UserDetails: UserDetailsScreen,
-    Users: UsersScreen,
-    Developers: DevelopersScreen,
+    Services: {
+      screen: ServicesScreen,
+      navigationOptions: { title: 'Services' },
+    },
+    UserDetails: {
+      screen: UserDetailsScreen,
+      navigationOptions: {
+        title: 'Formulaire',
+      },
+    },
+    Users: {
+      screen: UsersScreen,
+      navigationOptions: {
+        title: 'Résultat',
+      },
+    },
+    Developers: {
+      screen: DevelopersScreen,
+      navigationOptions: {
+        title: 'Développeurs',
+      },
+    },
   },
   {
     // Options

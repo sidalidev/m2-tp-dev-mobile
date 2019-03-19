@@ -1,7 +1,8 @@
 import React from 'react'
+import { createStackNavigator } from 'react-navigation'
 import { View, Text } from 'react-native'
 
-export default class UserDetailsScreen extends React.Component {
+class UserDetailsScreen extends React.Component {
   static navigationOptions = {
     title: 'Formulaire',
   }
@@ -13,3 +14,9 @@ export default class UserDetailsScreen extends React.Component {
     )
   }
 }
+
+const StackNavigator = createStackNavigator({
+  UserDetails: UserDetailsScreen,
+})
+
+export default StackNavigator

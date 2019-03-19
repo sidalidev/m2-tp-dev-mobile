@@ -1,7 +1,8 @@
 import React from 'react'
+import { createStackNavigator } from 'react-navigation'
 import { View, Text } from 'react-native'
 
-export default class DevelopersScreen extends React.Component {
+class DevelopersScreen extends React.Component {
   static navigationOptions = {
     title: 'Développeurs',
   }
@@ -14,3 +15,9 @@ export default class DevelopersScreen extends React.Component {
     )
   }
 }
+
+const StackNavigator = createStackNavigator({
+  Developers: DevelopersScreen,
+})
+
+export default StackNavigator

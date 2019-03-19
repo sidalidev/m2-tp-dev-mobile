@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import { createStackNavigator } from 'react-navigation'
 import { Button } from 'react-native-elements'
 
-export default class ServicesScreen extends React.Component {
+class ServicesScreen extends React.Component {
   static navigationOptions = {
     title: 'Services',
   }
@@ -14,10 +15,16 @@ export default class ServicesScreen extends React.Component {
         <Button
           title="User Details"
           onPress={() => {
-            this.props.navigation.push('UserDetails')
+            this.props.navigation.navigate('UserDetails')
           }}
         />
       </View>
     )
   }
 }
+
+const StackNavigator = createStackNavigator({
+  Services: ServicesScreen,
+})
+
+export default StackNavigator
