@@ -1,5 +1,6 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
+
 import BottomTabNavigator from './navigation/BottomTabNavigator'
 
 const AppContainer = createAppContainer(BottomTabNavigator)

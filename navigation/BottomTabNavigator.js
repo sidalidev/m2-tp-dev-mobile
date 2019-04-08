@@ -1,10 +1,12 @@
-import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
+import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation'
+
+import { BLUE, GRAY } from '../assets/colors'
+import DevelopersScreen from '../screens/DevelopersScreen'
 import ServicesScreen from '../screens/ServicesScreen'
 import UserDetailsScreen from '../screens/UserDetailsScreen'
 import UsersScreen from '../screens/UsersScreen'
-import DevelopersScreen from '../screens/DevelopersScreen'
 
 const BottomTabNavigator = createBottomTabNavigator(
   {
@@ -39,8 +41,8 @@ const BottomTabNavigator = createBottomTabNavigator(
     // Options
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarOptions: {
-        activeTintColor: '#e74c3c',
-        inactiveTintColor: '#95a5a6',
+        activeTintColor: BLUE,
+        inactiveTintColor: GRAY,
       },
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state

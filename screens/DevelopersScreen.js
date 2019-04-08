@@ -1,6 +1,6 @@
 import React from 'react'
+import { Text, View } from 'react-native'
 import { createStackNavigator } from 'react-navigation'
-import { View, Text } from 'react-native'
 
 class DevelopersScreen extends React.Component {
   static navigationOptions = {
