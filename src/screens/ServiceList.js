@@ -2,12 +2,13 @@ import React from 'react'
 import { ScrollView, Text } from 'react-native'
 import { Button, Card } from 'react-native-elements'
 import { GREEN } from 'utils/colors.js'
-import SERVICES_CONTAINER from 'data/service.json'
-import { BLACK, NAVY } from '../utils/colors'
 
-class ServicesScreen extends React.Component {
+import SERVICES_CONTAINER from 'data/service.json'
+import { NAVY } from '../utils/colors'
+
+export default class ServiceList extends React.Component {
   static navigationOptions = {
-    title: 'Services',
+    title: 'Liste des services',
   }
 
   state = {
@@ -24,7 +25,11 @@ class ServicesScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingVertical: 20 }}
+        bounces={true}
+      >
         <Text
           style={{
             margin: 20,
@@ -77,5 +82,3 @@ class ServicesScreen extends React.Component {
     )
   }
 }
-
-export default ServicesScreen

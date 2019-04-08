@@ -1,10 +1,9 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { createStackNavigator } from 'react-navigation'
 
-class UserDetailsScreen extends React.Component {
+export default class ServiceRegistrationForm extends React.Component {
   static navigationOptions = {
-    title: 'Formulaire',
+    title: "Formulaire d'inscription",
   }
 
   render() {
@@ -17,9 +16,3 @@ class UserDetailsScreen extends React.Component {
     )
   }
 }
-
-const StackNavigator = createStackNavigator({
-  UserDetails: UserDetailsScreen,
-})
-
-export default StackNavigator

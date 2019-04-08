@@ -1,8 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import { createStackNavigator } from 'react-navigation'
 
-class UsersScreen extends React.Component {
+export default class UserList extends React.Component {
   static navigationOptions = {
     title: 'Résultat',
   }
@@ -14,9 +13,3 @@ class UsersScreen extends React.Component {
     )
   }
 }
-
-const StackNavigator = createStackNavigator({
-  Users: UsersScreen,
-})
-
-export default StackNavigator

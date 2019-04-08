@@ -6,40 +6,26 @@ import {
   createStackNavigator,
 } from 'react-navigation'
 
-import UsersScreen from 'screens/UsersScreen'
-import UserDetailsScreen from 'screens/UserDetailsScreen'
-import ServicesScreen from 'screens/ServicesScreen'
-import DevelopersScreen from 'screens/DevelopersScreen'
+import ServiceList from 'screens/ServiceList'
+import ServiceRegistrationForm from 'screens/ServiceRegistrationForm'
+import UserList from 'screens/UserList'
+import DeveloperList from 'screens/DeveloperList'
 
 import { BLUE, GRAY } from 'utils/colors'
 
-const ServicesStack = createStackNavigator(
+const ServicesStackNavigator = createStackNavigator(
   {
-    ServiceList: ServicesScreen,
-    UserDetails: UserDetailsScreen,
-  },
-  { headerMode: 'none' },
-)
-
-const UsersStack = createStackNavigator(
-  {
-    UserList: UsersScreen,
-  },
-  { headerMode: 'none' },
-)
-
-const DevelopersStack = createStackNavigator(
-  {
-    DeveloperList: DevelopersScreen,
+    ServiceList: ServiceList,
+    UserDetails: ServiceRegistrationForm,
   },
   { headerMode: 'none' },
 )
 
 const BottomTabNavigator = createBottomTabNavigator(
   {
-    Services: ServicesStack,
-    Users: UsersStack,
-    Developers: DevelopersStack,
+    Services: ServicesStackNavigator,
+    Users: UserList,
+    Developers: DeveloperList,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
