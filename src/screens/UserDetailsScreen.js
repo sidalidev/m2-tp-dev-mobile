@@ -6,10 +6,13 @@ class UserDetailsScreen extends React.Component {
   static navigationOptions = {
     title: 'Formulaire',
   }
+
   render() {
+    const service = this.props.navigation.getParam('service', 'NO_SERVICE')
+
     return (
       <View>
-        <Text>UserDetails Screen</Text>
+        <Text>{JSON.stringify(service)}</Text>
       </View>
     )
   }

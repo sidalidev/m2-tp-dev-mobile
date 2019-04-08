@@ -1,10 +1,9 @@
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
 import { Button, Card } from 'react-native-elements'
-import { createStackNavigator } from 'react-navigation'
-
-import { GREEN } from '../assets/colors.js'
-import SERVICES_CONTAINER from '../assets/service.json'
+import { GREEN } from 'utils/colors.js'
+import SERVICES_CONTAINER from 'data/service.json'
+import { BLACK, NAVY } from '../utils/colors'
 
 class ServicesScreen extends React.Component {
   static navigationOptions = {
@@ -19,13 +18,24 @@ class ServicesScreen extends React.Component {
     this.setState({ services: SERVICES_CONTAINER.services })
   }
 
-  selectService = title => {
-    debugger
+  selectService = service => {
+    this.props.navigation.navigate('UserDetails', { service })
   }
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{ paddingVertical: 10 }}>
+      <ScrollView contentContainerStyle={{ paddingVertical: 20 }}>
+        <Text
+          style={{
+            margin: 20,
+            textAlign: 'center',
+            fontSize: 30,
+            fontWeight: '200',
+            color: NAVY,
+          }}
+        >
+          Bienvenue, veuillez choisir un service
+        </Text>
         {this.state.services.length ? (
           this.state.services.map(service => {
             const title = service.title
@@ -54,7 +64,7 @@ class ServicesScreen extends React.Component {
                   }}
                   title="Sélectionner"
                   onPress={() => {
-                    this.selectService(title)
+                    this.selectService(service)
                   }}
                 />
               </Card>
@@ -68,8 +78,4 @@ class ServicesScreen extends React.Component {
   }
 }
 
-const StackNavigator = createStackNavigator({
-  Services: ServicesScreen,
-})
-
-export default StackNavigator
+export default ServicesScreen
