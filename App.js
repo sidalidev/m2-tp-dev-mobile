@@ -2,13 +2,13 @@ import React from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import BottomTabNavigator from 'navigation/BottomTabNavigator'
-import SystemInfos from 'screens/SystemInfos'
+import DeviceInfos from 'screens/DeviceInfos'
 import { BLUE } from './src/utils/colors'
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 class App extends React.Component {
-  openSystemInfos = () => {
-    this.props.navigation.navigate('SystemInfos')
+  openDeviceInfos = () => {
+    this.props.navigation.navigate('DeviceInfos')
   }
   render() {
     return (
@@ -26,7 +26,7 @@ class App extends React.Component {
             alignSelf: 'flex-end',
           }}
         >
-          <TouchableOpacity onPress={this.openSystemInfos}>
+          <TouchableOpacity onPress={this.openDeviceInfos}>
             <FontAwesome name="question" size={32} color={BLUE} />
           </TouchableOpacity>
         </View>
@@ -38,7 +38,7 @@ class App extends React.Component {
 
 const AppWithNavigation = createAppContainer(
   createStackNavigator(
-    { App, SystemInfos },
+    { App, DeviceInfos },
     { headerMode: 'none', mode: 'modal' },
   ),
 )

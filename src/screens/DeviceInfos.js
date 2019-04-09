@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
-import { BLUE } from '../utils/colors'
+import { RED } from '../utils/colors'
 
-export default class SystemInfos extends Component {
+export default class DeviceInfos extends Component {
   goBack = () => {
     this.props.navigation.goBack()
   }
@@ -17,9 +17,9 @@ export default class SystemInfos extends Component {
           paddingHorizontal: 10,
         }}
       >
-        <View>
+        <View style={{ alignSelf: 'flex-end' }}>
           <TouchableOpacity onPress={this.goBack}>
-            <FontAwesome name="close" size={32} color={BLUE} />
+            <FontAwesome name="close" size={32} color={RED} />
           </TouchableOpacity>
         </View>
       </View>
