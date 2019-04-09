@@ -38,7 +38,7 @@ class App extends React.Component {
 
 const AppWithNavigation = createAppContainer(
   createStackNavigator(
-    { SystemInfos, App },
+    { App, SystemInfos },
     { headerMode: 'none', mode: 'modal' },
   ),
 )
