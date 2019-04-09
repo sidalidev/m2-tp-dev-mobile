@@ -4,7 +4,7 @@ import { Button, Card } from 'react-native-elements'
 import { GREEN } from 'utils/colors.js'
 
 import SERVICES_CONTAINER from 'data/service.json'
-import { NAVY } from '../utils/colors'
+import { BLACK } from '../utils/colors'
 
 export default class ServiceList extends React.Component {
   static navigationOptions = {
@@ -28,18 +28,27 @@ export default class ServiceList extends React.Component {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingVertical: 20 }}
-        bounces={true}
       >
         <Text
           style={{
-            margin: 20,
+            margin: 10,
             textAlign: 'center',
             fontSize: 30,
-            fontWeight: '200',
-            color: NAVY,
+            fontWeight: '600',
+            color: BLACK,
           }}
         >
-          Bienvenue, veuillez choisir un service
+          Bienvenue!
+        </Text>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontSize: 20,
+            fontWeight: '200',
+            color: BLACK,
+          }}
+        >
+          Veuillez séléctionner un service
         </Text>
         {this.state.services.length ? (
           this.state.services.map(service => {
