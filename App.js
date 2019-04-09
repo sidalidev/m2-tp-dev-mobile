@@ -10,6 +10,7 @@ import {
   CheckBox,
 } from 'react-native-elements'
 import serviceProvider from './assets/service.json'
+import RadioGroup from 'react-native-radio-buttons-group';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -115,16 +116,46 @@ class FormService extends React.Component {
 class GenerateForm extends React.Component {
   state = {
     checkedValues: [],
+    checked : false,
+    data : this.constructTab()
   }
 
+  constructTab(){
+    const { element } = this.props
+    let tab = []
+    let label =""
+    let v = ""
+    element.value.map(value => (
+      label= value,
+      v = value,
+      tab.push({v, label})
+   ));
+   return tab;
+  }
+
+<<<<<<< Updated upstream
   renderInput() {
     const { element } = this.props
 
+=======
+  getValues(value, type, section){
+    let values = {value, type, section}
+    return values;
+  }
+
+  onPress = data => this.setState({ data });
+
+  renderInput() {
+    const { element } = this.props
+    const type = this.props.element.type
+    const section = this.props.element.section
+>>>>>>> Stashed changes
     switch (element.type) {
       case 'edit':
         return <Input placeholder={element.value[0]} />
 
       case 'radioGroup':
+<<<<<<< Updated upstream
         return element.value.map(value => (
           <CheckBox
             key={value}
@@ -142,6 +173,40 @@ class GenerateForm extends React.Component {
             }}
           />
         ))
+=======
+        console.log(this.state.data)
+        let selectedButton = this.state.data.find(e => e.selected == true);
+        selectedButton = selectedButton ? selectedButton.v : this.state.data[0].label;
+        return (
+            <View style={styles.container}>
+               <Text style={styles.valueText}>
+                    Value = {selectedButton}
+                </Text>
+                <RadioGroup radioButtons={this.state.data} onPress={this.onPress}/>
+            </View>
+        );
+
+
+          // <CheckBox
+          //   key={value}
+          //   title={value}
+          //   checked= {this.state.checkedValues.includes(this.getValues(value, type, section))}
+          //   onPress={() => {
+          //     let checkedValue  = this.state.checkedValues
+          //     let values = this.getValues(value, type, section)
+          //     if (checkedValue.includes(values)) {
+          //       checkedValue.splice(checkedValue.indexOf(values), 1)
+          //     } else {
+          //       checkedValue = []
+          //       checkedValue.push(values)
+          //     }
+          //     console.log(checkedValue)
+          //     this.setState(() => ({ checkedValues: checkedValue }));
+          //     console.log(this.state.checkedValues)
+          //   }}
+          // />
+        
+>>>>>>> Stashed changes
 
       case 'label':
         return <Input placeholder={element.value[0]} />
@@ -154,3 +219,11 @@ class GenerateForm extends React.Component {
     return <View>{this.renderInput()}</View>
   }
 }
+
+const stylesButton = StyleSheet.create({
+  container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+  }
+});
