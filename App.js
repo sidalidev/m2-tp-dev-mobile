@@ -117,20 +117,8 @@ class GenerateForm extends React.Component {
     checkedValues: [],
   }
 
-<<<<<<< HEAD
   renderInput() {
     const { element } = this.props
-=======
-  getValues(value, type, section){
-    let values = {value, type, section}
-    return values;
-  }
-
-  renderInput() {
-    const { element } = this.props
-    const type = this.props.element.type
-    const section = this.props.element.section
->>>>>>> ea5e3cb23983e97f98558d27fa094aefd7ecfde2
 
     switch (element.type) {
       case 'edit':
@@ -138,7 +126,6 @@ class GenerateForm extends React.Component {
 
       case 'radioGroup':
         return element.value.map(value => (
-<<<<<<< HEAD
           <CheckBox
             key={value}
             title={value}
@@ -159,32 +146,6 @@ class GenerateForm extends React.Component {
       case 'label':
         return <Input placeholder={element.value[0]} />
 
-=======
-
-          <CheckBox
-            key={value}
-            title={value}
-            checked= {this.state.checkedValues.includes(this.getValues(value, type, section))}
-            onPress={() => {
-              let checkedValue  = this.state.checkedValues
-              let values = this.getValues(value, type, section)
-              if (checkedValue.includes(values)) {
-                checkedValue.splice(checkedValue.indexOf(values), 1)
-              } else {
-                checkedValue = []
-                checkedValue.push(values)
-              }
-              console.log(checkedValue)
-              this.setState(() => ({ checkedValues: checkedValue }));
-              console.log(this.state.checkedValues)
-            }}
-          />
-        ))
-
-      case 'label':
-        return <Input placeholder={element.value[0]} />
-
->>>>>>> ea5e3cb23983e97f98558d27fa094aefd7ecfde2
       case 'switch':
         return <Text>Eh j'parle pas de la console hein..</Text>
     }
