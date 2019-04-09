@@ -1,5 +1,5 @@
 import React from 'react'
-import { Ionicons } from '@expo/vector-icons'
+import Icon from 'react-native-vector-icons/Ionicons'
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -51,7 +51,7 @@ const BottomTabNavigator = createBottomTabNavigator(
             break
         }
 
-        return <Ionicons name={iconName} size={25} color={tintColor} />
+        return <Icon name={iconName} size={25} color={tintColor} />
       },
     }),
   },
