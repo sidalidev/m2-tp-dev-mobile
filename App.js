@@ -2,9 +2,14 @@ import React from 'react'
 import { View, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import BottomTabNavigator from 'navigation/BottomTabNavigator'
+import SystemInfos from 'screens/SystemInfos'
 import { BLUE } from './src/utils/colors'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
-export default class App extends React.Component {
+class App extends React.Component {
+  openSystemInfos = () => {
+    this.props.navigation.navigate('SystemInfos')
+  }
   render() {
     return (
       <View
@@ -21,7 +26,7 @@ export default class App extends React.Component {
             alignSelf: 'flex-end',
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.openSystemInfos}>
             <FontAwesome name="question" size={32} color={BLUE} />
           </TouchableOpacity>
         </View>
@@ -30,3 +35,12 @@ export default class App extends React.Component {
     )
   }
 }
+
+const AppWithNavigation = createAppContainer(
+  createStackNavigator(
+    { SystemInfos, App },
+    { headerMode: 'none', mode: 'modal' },
+  ),
+)
+
+export default AppWithNavigation
