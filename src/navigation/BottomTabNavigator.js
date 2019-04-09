@@ -23,8 +23,8 @@ const ServicesStackNavigator = createStackNavigator(
 
 const BottomTabNavigator = createBottomTabNavigator(
   {
-    Services: ServicesStackNavigator,
     Users: UserList,
+    Services: ServicesStackNavigator,
     Developers: DeveloperList,
   },
   {
@@ -44,7 +44,7 @@ const BottomTabNavigator = createBottomTabNavigator(
           //   iconName = 'ios-person-add'
           //   break
           case 'Users':
-            iconName = 'ios-albums'
+            iconName = 'ios-person'
             break
           case 'Developers':
             iconName = 'ios-code'

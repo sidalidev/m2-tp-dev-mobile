@@ -1,9 +1,9 @@
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
 import { Button, Card } from 'react-native-elements'
-
-import SERVICES_CONTAINER from 'data/service.json'
 import { BLACK, BLUE } from 'utils/colors'
+import styles from 'utils/styles'
+import SERVICES_CONTAINER from 'data/service.json'
 
 export default class ServiceList extends React.Component {
   static navigationOptions = {
@@ -26,13 +26,12 @@ export default class ServiceList extends React.Component {
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingVertical: 20 }}
+        contentContainerStyle={styles.listContainer}
       >
         <Text
           style={{
-            margin: 10,
             textAlign: 'center',
-            fontSize: 30,
+            fontSize: 34,
             fontWeight: '600',
             color: BLACK,
           }}

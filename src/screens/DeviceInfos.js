@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { BLACK, RED } from 'utils/colors'
 import SYSTEM_INFOS from 'utils/system-infos'
 import DeviceInfo from 'components/DeviceInfo'
+import styles from 'utils/styles'
 
 export default class DeviceInfos extends Component {
   goBack = () => {
@@ -12,28 +13,13 @@ export default class DeviceInfos extends Component {
   }
   render() {
     return (
-      <View style={{ height: '100%', width: '100%' }}>
-        <View
-          style={{
-            alignSelf: 'flex-end',
-            paddingTop: 20,
-            paddingRight: 20,
-          }}
-        >
+      <View style={[styles.container, { position: 'relative' }]}>
+        <View style={styles.topRightAbsolute}>
           <TouchableOpacity onPress={this.goBack}>
             <Icon name="close" size={40} color={RED} />
           </TouchableOpacity>
         </View>
-        <Text
-          style={{
-            textAlign: 'center',
-            fontSize: 26,
-            fontWeight: '500',
-            color: BLACK,
-          }}
-        >
-          Informations Système
-        </Text>
+        <Text style={styles.screenTitle}>Informations Système</Text>
         <ScrollView
           contentContainerStyle={{
             padding: 30,
