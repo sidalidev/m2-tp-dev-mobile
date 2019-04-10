@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import { BLUE } from 'utils/colors'
 import SYSTEM_INFOS from 'utils/system-infos'
 import DeviceInfo from 'components/DeviceInfo'
@@ -16,7 +16,7 @@ export default class DeviceInfos extends Component {
       <View style={[styles.container, { position: 'relative' }]}>
         <View style={styles.topRightAbsolute}>
           <TouchableOpacity onPress={this.goBack}>
-            <Icon name="close" size={38} color={BLUE} />
+            <Icon name="times" size={40} color={BLUE} />
           </TouchableOpacity>
         </View>
         <Text style={styles.screenTitle}>Informations Système</Text>

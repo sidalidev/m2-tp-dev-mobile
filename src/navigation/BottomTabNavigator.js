@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -13,6 +13,7 @@ import DeveloperList from 'screens/DeveloperList'
 
 import { BLUE, GRAY } from 'utils/colors'
 
+// Wrap Service Selection & Registration Workflow
 const ServicesStackNavigator = createStackNavigator(
   {
     ServiceList: ServiceList,
@@ -21,11 +22,12 @@ const ServicesStackNavigator = createStackNavigator(
   { headerMode: 'none' },
 )
 
+// BottomNavigation for the 3 main screens
 const BottomTabNavigator = createBottomTabNavigator(
   {
-    Users: UserList,
-    Services: ServicesStackNavigator,
     Developers: DeveloperList,
+    Services: ServicesStackNavigator,
+    Users: UserList,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -38,19 +40,15 @@ const BottomTabNavigator = createBottomTabNavigator(
         let iconName
         switch (routeName) {
           case 'Services':
-            iconName = 'ios-list'
+            iconName = 'tv'
             break
-          // case 'UserDetails':
-          //   iconName = 'ios-person-add'
-          //   break
           case 'Users':
-            iconName = 'ios-person'
+            iconName = 'users'
             break
           case 'Developers':
-            iconName = 'ios-code'
+            iconName = 'code'
             break
         }
-
         return <Icon name={iconName} size={25} color={tintColor} />
       },
     }),
