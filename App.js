@@ -19,7 +19,6 @@ class App extends React.Component {
           style={[
             styles.topRightAbsolute,
             {
-              zIndex: 9999,
               backgroundColor: WHITE,
               padding: 10,
               borderRadius: 30,
