@@ -13,7 +13,7 @@ export default StyleSheet.create({
     right: 0,
     zIndex: 9999,
     elevation: 1,
-    marginRight: 15,
+    marginRight: 20,
     marginTop: 15,
   },
   listContainer: { padding: 15 },

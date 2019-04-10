@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { GRAY, BLACK, RED } from 'utils/colors'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { BLACK, RED } from 'utils/colors'
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 export default ({ value, label }) => (
   <View
@@ -33,7 +33,7 @@ export default ({ value, label }) => (
         color: BLACK,
       }}
     >
-      {value ? value : <Icon name="close" size={22} color={RED} />}
+      {value ? value : <Icon name="times" size={22} color={RED} />}
     </Text>
   </View>
 )
