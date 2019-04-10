@@ -1,5 +1,5 @@
 import React from 'react'
-import { Ionicons } from '@expo/vector-icons'
+import Icon from 'react-native-vector-icons/Ionicons'
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -23,8 +23,8 @@ const ServicesStackNavigator = createStackNavigator(
 
 const BottomTabNavigator = createBottomTabNavigator(
   {
-    Services: ServicesStackNavigator,
     Users: UserList,
+    Services: ServicesStackNavigator,
     Developers: DeveloperList,
   },
   {
@@ -44,14 +44,14 @@ const BottomTabNavigator = createBottomTabNavigator(
           //   iconName = 'ios-person-add'
           //   break
           case 'Users':
-            iconName = 'ios-albums'
+            iconName = 'ios-person'
             break
           case 'Developers':
             iconName = 'ios-code'
             break
         }
 
-        return <Ionicons name={iconName} size={25} color={tintColor} />
+        return <Icon name={iconName} size={25} color={tintColor} />
       },
     }),
   },
