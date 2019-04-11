@@ -1,75 +1,56 @@
 import React from 'react'
-import {StyleSheet, View, ScrollView, Dimensions } from 'react-native'
-import {Button, Input} from 'react-native-elements'
-import serviceProvider from './assets/service.json'
-import ImageService from './src/ImageService';
-import FormService from './src/FormService';
+import { View, TouchableOpacity } from 'react-native'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
+import Icon from 'react-native-vector-icons/FontAwesome5'
+import BottomTabNavigator from 'navigation/BottomTabNavigator'
+import DeviceInfos from 'screens/DeviceInfos'
+import { WHITE, BLUE } from 'utils/colors'
+import styles from 'utils/styles'
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handler = this.handler.bind(this)
-    this.service = serviceProvider.services.map(function(item) {
-      return {
-        title: item.title,
-        imageUrl: item.elements[0].value[0],
-      }
-    })
-    this.serviceContent = serviceProvider.services[0].elements.map(function(
-      field,
-    ) {
-      return {
-        section: field.section,
-        type: field.type,
-        value: field.value,
-        mandatory: field.mandatory,
-      }
-    })
-  }
-
-  state = {
-    name: '',
-    checked: false,
-  }
-
-  handler(){
-    this.setState({
-      formValue: []
-    })
-  }
-
-  getItem = event => {
-    this.setState({
-      name: event,
-    })
-  }
-
-  validate(){
-
+class App extends React.Component {
+  openDeviceInfos = () => {
+    this.props.navigation.navigate('DeviceInfos')
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView>
-          <ImageService
-            text={this.service[0].title}
-            img={this.service[0].imageUrl}
-          />
-          <FormService service={this.serviceContent} />
-        </ScrollView>
-        <Button style={{ position : "absolute", width : Dimensions.get('window').width}} title="Valider"
-          onPress={this.validate()}/>
+        <View
+          style={[
+            styles.topRightAbsolute,
+            {
+              backgroundColor: BLUE,
+              paddingVertical: 10,
+              borderRadius: 30,
+              width: 60,
+              elevation: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+            },
+          ]}
+        >
+          <TouchableOpacity onPress={this.openDeviceInfos}>
+            <Icon name="question" size={38} color={WHITE} />
+          </TouchableOpacity>
+        </View>
+        <BottomTabNavigator />
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    position : "relative",
-  }
-})
+const AppWithNavigation = createAppContainer(
+  createStackNavigator(
+    {
+      App: {
+        screen: App,
+      },
+      DeviceInfos: {
+        screen: DeviceInfos,
+      },
+    },
+    { headerMode: 'none', mode: 'modal' },
+  ),
+)
+
+export default AppWithNavigation
