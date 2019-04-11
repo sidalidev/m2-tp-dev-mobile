@@ -96,16 +96,16 @@ export default class DeveloperList extends React.Component {
 
   state = {
     isModalVisible: false,
-    spinValue: 0,
+    // spinValue: 0,
   }
 
   componentDidMount() {
-    this.spinValue.setValue(0)
-    Animated.timing(this.spinValue, {
-      toValue: 1,
-      duration: 4000,
-      easing: Easing.linear,
-    }).start(() => this.spin())
+    // this.spinValue.setValue(0)
+    // Animated.timing(this.spinValue, {
+    //   toValue: 1,
+    //   duration: 4000,
+    //   easing: Easing.linear,
+    // }).start(() => this.spin())
   }
 
   hideModal = () => {
