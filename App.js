@@ -2,14 +2,13 @@ import React from 'react'
 import {StyleSheet, View, ScrollView, Dimensions } from 'react-native'
 import {Button, Input} from 'react-native-elements'
 import serviceProvider from './assets/service.json'
-import GenerateForm from './src/GenerateForm';
 import ImageService from './src/ImageService';
 import FormService from './src/FormService';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-
+    this.handler = this.handler.bind(this)
     this.service = serviceProvider.services.map(function(item) {
       return {
         title: item.title,
@@ -33,10 +32,20 @@ export default class App extends React.Component {
     checked: false,
   }
 
+  handler(){
+    this.setState({
+      formValue: []
+    })
+  }
+
   getItem = event => {
     this.setState({
       name: event,
     })
+  }
+
+  validate(){
+
   }
 
   render() {
@@ -49,7 +58,8 @@ export default class App extends React.Component {
           />
           <FormService service={this.serviceContent} />
         </ScrollView>
-        <Button style={{ position : "absolute", width : Dimensions.get('window').width}} title="Valider"/>
+        <Button style={{ position : "absolute", width : Dimensions.get('window').width}} title="Valider"
+          onPress={this.validate()}/>
       </View>
     )
   }

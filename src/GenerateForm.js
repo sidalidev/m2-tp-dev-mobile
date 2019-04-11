@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text,TextInput, View, Switch } from 'react-native'
 import {Input} from 'react-native-elements';
 import RadioGroup from 'react-native-radio-buttons-group';
+import SwitchToggle from 'react-native-switch-toggle'
 
 export default class GenerateForm extends React.Component {
   
@@ -9,7 +10,8 @@ export default class GenerateForm extends React.Component {
       super(props)
       this.state = {
         data : this.constructTabForCheckBox(),
-        formValue : []
+        formValue : [],
+        switchOn : true
       }
     }
     
@@ -26,7 +28,15 @@ export default class GenerateForm extends React.Component {
      return tab;
     }
   
+    sendData(){
+        this.props.sendData(this.state.formValue[0])
+    }
+
     onPress = data => this.setState({ data });
+
+    onSwitchPress = () => {
+      this.setState({ switchOn: !this.state.switchOn })
+    }
 
     renderInput() {
       const { element } = this.props
@@ -34,32 +44,45 @@ export default class GenerateForm extends React.Component {
       const section = element.section
       switch (element.type) {
         case 'edit':
+            let value = []
           return (
-              //TODO :a travailler 
             <TextInput placeholder={element.value[0]} 
                 onEndEditing={(text)=>{
-                    let field = element.value[0] 
-                    console.log(SyntheticEvent.find(text))
-                    this.setState = (text) => {formValue.push(SyntheticEvent.find(text))}
-                    console.log(this.state.formValue)
+                    this.state.formValue.splice(0,1),
+                    this.state.formValue.push(text.nativeEvent.text),
+                    this.sendData()
                 }}
-                value={this.state.text} style={{fontSize : 20, height: 40}}/>
+                value={this.state.formValue[0]}
+                style={{fontSize : 20, height: 40, borderBottomWidth : 1}}/>
           );
   
         case 'radioGroup':
-          let selectedButton = this.state.data.find(e => e.selected == true);
-          selectedButton = selectedButton ? selectedButton.v : this.state.data[0].label;
-          return <RadioGroup radioButtons={this.state.data} onPress={this.onPress}/>
+          return <RadioGroup radioButtons={this.state.data} onPress={(this.onPress, this.setState = () => {(
+            selectedButton = this.state.data.find(e => e.selected == true),
+            selectedButton = selectedButton ? selectedButton.v : this.state.data[0].v,
+            this.state.formValue.splice(0,1),
+            this.state.formValue.push(selectedButton),
+            this.sendData())})}
+            
+            value = {this.state.formValue[0]}/>
   
         case 'label':
           return <Text style={{ fontSize : 20, fontWeight : 'bold'}} >{element.value[0]} </Text>
   
-        case 'switch':
-          return <Text>Eh j'parle pas de la console hein..</Text>
+          case 'switch':
+            return (
+              <SwitchToggle
+                switchOn={this.state.switchOn}
+                onPress={this.onSwitchPress}
+              />
+            )
       }
+      
     }
     render() {
-      return <View>{this.renderInput()}</View>
+      return (
+            <View>{this.renderInput()}</View>            
+        );
     }
   }
   
