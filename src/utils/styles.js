@@ -4,7 +4,7 @@ import { BLACK } from 'utils/colors'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 15,
+    paddingTop: 40,
   },
   topRightAbsolute: {
     flex: 1,
