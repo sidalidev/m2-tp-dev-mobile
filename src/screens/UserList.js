@@ -133,77 +133,79 @@ export default class UserList extends React.Component {
     const { isLoadingUsers, servicesUsers } = this.state
     return (
       <ScrollView style={styles.listContainer}>
-        {isLoadingUsers ? <ActivityIndicator /> : null}
         <Text style={styles.screenTitle}>Inscrits</Text>
+        {isLoadingUsers ? <ActivityIndicator /> : null}
         <View style={{ marginTop: 20 }}>
-          {SERVICES_CONTAINER.services.length
-            ? SERVICES_CONTAINER.services.map(({ title, elements }) => {
+          {SERVICES_CONTAINER.services.length ? (
+            SERVICES_CONTAINER.services.map(({ title, elements }) => {
               const {
                 value: [imageUri],
               } = elements.find((element) => element.type === 'image')
               const serviceRegistrations = servicesUsers.filter(
                 (s) => s.serviceTitle == title,
               )
-              console.log(
-                `serviceRegistrations of ${title}`,
-                serviceRegistrations,
-              )
-              return serviceRegistrations.length ? (
-                serviceRegistrations.map((registration) => {
-                  return (
-                    <View key={title} style={{ marginVertical: 20 }}>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          elevation: 1,
-                          margin: 3,
-                          borderRadius: 10,
-                          padding: 5,
-                        }}
-                      >
-                        <Image
-                          style={{
-                            width: 50,
-                            height: 50,
-                            borderRadius: 10,
-                          }}
-                          source={{ uri: imageUri }}
-                        />
-                        <Text
-                          style={{
-                            fontSize: 18,
-                            fontWeight: '400',
-                            alignSelf: 'center',
-                            marginLeft: 10,
-                            color: BLACK,
-                          }}
-                        >
-                          {title}
-                        </Text>
-                      </View>
-                      <View style={{ paddingHorizontal: 40 }}>
+              return (
+                <View key={title}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      elevation: 1,
+                      margin: 3,
+                      borderRadius: 10,
+                      padding: 5,
+                    }}
+                  >
+                    <Image
+                      style={{
+                        width: 50,
+                        height: 50,
+                        borderRadius: 10,
+                      }}
+                      source={{ uri: imageUri }}
+                    />
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: '400',
+                        alignSelf: 'center',
+                        marginLeft: 10,
+                        color: BLACK,
+                      }}
+                    >
+                      {title}
+                    </Text>
+                  </View>
+                  {serviceRegistrations.length ? (
+                    serviceRegistrations.map((registration, index) => {
+                      return (
                         <View
+                          key={index}
                           style={{
                             padding: 10,
                             borderBottomWidth: 1,
                             borderBottomColor: SILVER,
+                            paddingHorizontal: 40,
                           }}
                         >
-                          {registration.formElements.map((element) =>
-                            this.renderRegistrationElement(element),
-                          )}
+                          {registration.formElements.map((element, index) => (
+                            <View key={index}>
+                              {this.renderRegistrationElement(element)}
+                            </View>
+                          ))}
                         </View>
-                      </View>
-                    </View>
-                  )
-                })
-              ) : (
-                <Text>
-                    Pas d{'\''}inscriptions dans {title}.
-                </Text>
+                      )
+                    })
+                  ) : (
+                    <Text>
+                      Pas d{'\''}inscriptions dans {title}.
+                    </Text>
+                  )}
+                </View>
               )
             })
-            : null}
+          ) : (
+            <Text>Pas de services.</Text>
+          )}
         </View>
       </ScrollView>
     )
