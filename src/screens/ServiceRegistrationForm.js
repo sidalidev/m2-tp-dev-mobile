@@ -10,7 +10,7 @@ import {
 import AsyncStorage from '@react-native-community/async-storage'
 import SwitchToggle from 'react-native-switch-toggle'
 import RadioGroup from 'react-native-radio-buttons-group'
-import { Button } from 'react-native-elements'
+import { Button, CheckBox } from 'react-native-elements'
 
 import ServiceImage from 'components/ServiceImage'
 
@@ -164,6 +164,20 @@ export default class ServiceRegistrationForm extends React.Component {
       return (
         <SwitchToggle
           switchOn={formElements[formValueIndex].formValue}
+          onPress={() => {
+            if (formElements[formValueIndex].formValue) {
+              this.updateFieldValue(formValueIndex, false)
+            } else {
+              this.updateFieldValue(formValueIndex, true)
+            }
+          }}
+        />
+      )
+    case 'button':
+      return (
+        <CheckBox
+          title={formElements[formValueIndex].value[0]}
+          checked={formElements[formValueIndex].formValue}
           onPress={() => {
             if (formElements[formValueIndex].formValue) {
               this.updateFieldValue(formValueIndex, false)

@@ -6,10 +6,11 @@ import {
   ActivityIndicator,
   ToastAndroid,
 } from 'react-native'
+import { CheckBox } from 'react-native-elements'
 import AsyncStorage from '@react-native-community/async-storage'
 import { ScrollView } from 'react-native-gesture-handler'
 import styles from 'utils/styles'
-import { BLACK, SILVER } from 'utils/colors'
+import { BLACK, SILVER, GRAY } from 'utils/colors'
 import SERVICES_CONTAINER from 'data/service.json'
 
 export default class UserList extends React.Component {
@@ -124,6 +125,15 @@ export default class UserList extends React.Component {
           </View>
         </View>
       )
+    case 'button':
+      return (
+        <CheckBox
+          checkedColor={GRAY}
+          title={element.value[0]}
+          checked={element.formValue}
+          disabled={true}
+        />
+      )
     default:
       return null
     }
@@ -132,7 +142,7 @@ export default class UserList extends React.Component {
   render() {
     const { isLoadingUsers, servicesUsers } = this.state
     return (
-      <ScrollView style={styles.listContainer}>
+      <ScrollView contentContainerStyle={styles.listContainer}>
         <Text style={styles.screenTitle}>Inscrits</Text>
         {isLoadingUsers ? <ActivityIndicator /> : null}
         <View style={{ marginTop: 20 }}>

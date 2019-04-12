@@ -25,8 +25,8 @@ const ServicesStackNavigator = createStackNavigator(
 // BottomNavigation for the 3 main screens
 const BottomTabNavigator = createBottomTabNavigator(
   {
-    Users: UserList,
     Services: ServicesStackNavigator,
+    Users: UserList,
     Developers: DeveloperList,
   },
   {
