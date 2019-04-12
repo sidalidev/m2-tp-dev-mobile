@@ -100,7 +100,10 @@ export default class ServiceRegistrationForm extends React.Component {
         'Inscription enregistrée avec succèes !',
         ToastAndroid.SHORT,
       )
-      this.props.navigation.navigate('Users')
+      this.props.navigation.navigate('Users', {
+        serviceTitle: service.title,
+        formElements,
+      })
     } catch (error) {
       ToastAndroid.show(
         'Nous n\'avons pas pu enregistrer votre inscription !',

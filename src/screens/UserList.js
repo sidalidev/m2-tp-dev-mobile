@@ -22,29 +22,39 @@ export default class UserList extends React.Component {
     isLoadingUsers: false,
     servicesUsers: [],
   }
+  didFocusSubscription
 
-  async componentDidMount() {
-    this.setState({
-      isLoadingUsers: true,
-      servicesUsers: [],
-    })
-    try {
-      let servicesUsers = await AsyncStorage.getItem('ServiceUsers')
-      servicesUsers = JSON.parse(servicesUsers)
-      this.setState({
-        servicesUsers,
-      })
-      this.props.navigation.navigate('Users')
-    } catch (error) {
-      ToastAndroid.show(
-        'Nous n\'avons pas pu récupérer les utilsateurs inscrits !',
-        ToastAndroid.SHORT,
-      )
-    } finally {
-      this.setState({
-        isLoadingUsers: false,
-      })
-    }
+  componentDidMount() {
+    this.didFocusSubscription = this.props.navigation.addListener(
+      'didFocus',
+      async () => {
+        this.setState({
+          isLoadingUsers: true,
+          servicesUsers: [],
+        })
+        try {
+          let servicesUsers = await AsyncStorage.getItem('ServiceUsers')
+          servicesUsers = JSON.parse(servicesUsers)
+          this.setState({
+            servicesUsers,
+          })
+          this.props.navigation.navigate('Users')
+        } catch (error) {
+          ToastAndroid.show(
+            'Nous n\'avons pas pu récupérer les utilsateurs inscrits !',
+            ToastAndroid.SHORT,
+          )
+        } finally {
+          this.setState({
+            isLoadingUsers: false,
+          })
+        }
+      },
+    )
+  }
+
+  componentWillUnmount() {
+    this.didFocusSubscription.remove()
   }
 
   renderRegistrationElement(element) {
@@ -146,8 +156,15 @@ export default class UserList extends React.Component {
         <Text style={styles.screenTitle}>Inscrits</Text>
         {isLoadingUsers ? <ActivityIndicator /> : null}
         <View style={{ marginTop: 20 }}>
-          {SERVICES_CONTAINER.services.length ? (
+          {servicesUsers && servicesUsers.length ? (
             SERVICES_CONTAINER.services.map(({ title, elements }) => {
+              if (!(elements && elements.length)) {
+                return (
+                  <Text style={{ padding: 20 }}>
+                    Pas d{'\''}inscriptions dans {title}.
+                  </Text>
+                )
+              }
               const {
                 value: [imageUri],
               } = elements.find((element) => element.type === 'image')
@@ -214,7 +231,7 @@ export default class UserList extends React.Component {
               )
             })
           ) : (
-            <Text>Pas de services.</Text>
+            <Text>Pas d{'\''}inscriptions pour le moment.</Text>
           )}
         </View>
       </ScrollView>
