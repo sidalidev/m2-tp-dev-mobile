@@ -3,7 +3,7 @@
   "tabWidth": 2,
   "semi": false,
   "singleQuote": true,
-  "arrowParens": "avoid",
+  "arrowParens": "always",
   "eslintIntegration": true,
   "tslintIntegration": true
 }
